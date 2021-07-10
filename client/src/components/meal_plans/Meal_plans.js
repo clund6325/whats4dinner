@@ -7,8 +7,8 @@ const Meal_plans = () => (
     <Jumbotron>
       <h1>Meal Plan Page</h1>
     </Jumbotron>
-    <CheckoutForm />
-    <CheckoutList />
+    <Meal_planForm />
+    <Meal_planList />
   </>
 )
 export default Meal_plans;
