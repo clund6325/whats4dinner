@@ -11,3 +11,5 @@ const Recipes = () => (
     <RecipeList />
   </>
 )
+
+export default Recipes;

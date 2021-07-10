@@ -8,11 +8,11 @@ export const Meal_planConsumer = Meal_planContext.Consumer;
 const Meal_planProvider = ({ children }) => {
 
     const [meal_plans, setMeal_plans] = useState([])
-    useEffect( () => {
+    const getAllMeal_plans = () => {
         axios.get('/api/meal_plans')
         .then( res => setMeal_plans(res.data))
         .catch(err => console.log(err))
-    }, [])
+    }
 
    const addMeal_plan = (meal_plan) => {
        axios.post('/api/meal_plans', { meal_plan })
@@ -51,6 +51,7 @@ const Meal_planProvider = ({ children }) => {
     return (
         <Meal_planContext.Provider value={{
             meal_plans, 
+            getAllMeal_plans: getAllMeal_plans,
             addMeal_plan: addMeal_plan,
             updateMeal_plan: updateMeal_plan,
             deleteMeal_plan: deleteMeal_plan,

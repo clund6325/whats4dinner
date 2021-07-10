@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 const Meal_planForm = ({ addMeal_plan, id, week_day, meal, theme, updateMeal_plan, handleEditClose, history }) => {
 
-  const [meal_plan, setMeal_plan] = useState({ week_day: "", meal: "", theme: 0.0 })
+  const [meal_plan, setMeal_plan] = useState({ week_day: "", meal: "", theme: "" })
   useEffect( () => {
     if (id) {
       setMeal_plan({ week_day, meal, theme })
@@ -13,8 +13,8 @@ const Meal_planForm = ({ addMeal_plan, id, week_day, meal, theme, updateMeal_pla
   }, [])
 
   const handleSubmit = (e) => {
-    // e.preventDefault()
-    // setCheckout({...checkout, fees: parseFloat(checkout.fees)})
+    e.preventDefault()
+    setMeal_plan({...meal_plan})
     if (id) {
       updateMeal_plan(id, meal_plan, history)
       handleEditClose()
@@ -30,7 +30,7 @@ const Meal_planForm = ({ addMeal_plan, id, week_day, meal, theme, updateMeal_pla
           <Form.Label>Week Day</Form.Label>
           <Form.Control 
             type="text" 
-            placeholder="text" 
+            placeholder="week day" 
             name="week_day"
             value={meal_plan.week_day}
             onChange={(e) => setMeal_plan({...meal_plan, week_day: e.target.value})}
@@ -40,7 +40,7 @@ const Meal_planForm = ({ addMeal_plan, id, week_day, meal, theme, updateMeal_pla
           <Form.Label>Meal</Form.Label>
           <Form.Control 
             type="text" 
-            placeholder="text" 
+            placeholder="meal" 
             name="meal"
             value={meal_plan.meal}
             onChange={(e) => setMeal_plan({...meal_plan, meal: e.target.value})}
