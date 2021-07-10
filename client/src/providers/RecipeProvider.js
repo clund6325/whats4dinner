@@ -28,7 +28,7 @@ const RecipeProvider = ({children}) => {
     axios.put(`/api/meal_plans/${id}/recipes/${id}`, {recipe})
       .then( res => {
         const updatedRecipes = recipes.map( r => {
-          if (recipes.id == id){
+          if (r.id == id){
             return res.data
           }
           return r

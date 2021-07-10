@@ -1,12 +1,15 @@
+import { Jumbotron, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
 const Nomatch = () => (
-  <>
+  <Jumbotron>
     <h1>404 Page not found</h1>
     <Link to="/">
-      Return Home
+      <Button>
+        Return Home
+      </Button>
     </Link>
-  </>
+  </Jumbotron>
 )
 
 export default Nomatch;
