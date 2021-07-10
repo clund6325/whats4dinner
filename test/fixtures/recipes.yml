@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  serv_size: 1
+  meal_plan: one
+
+two:
+  title: MyString
+  description: MyText
+  serv_size: 1
+  meal_plan: two

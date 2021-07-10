@@ -10,10 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_10_022549) do
+ActiveRecord::Schema.define(version: 2021_07_10_155330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "food_name"
+    t.string "measurement"
+    t.integer "calories"
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
+  end
+
+  create_table "meal_plans", force: :cascade do |t|
+    t.string "week_day"
+    t.string "meal"
+    t.string "theme"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_meal_plans_on_user_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "serv_size"
+    t.bigint "meal_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meal_plan_id"], name: "index_recipes_on_meal_plan_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -45,4 +75,7 @@ ActiveRecord::Schema.define(version: 2021_07_10_022549) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "ingredients", "recipes"
+  add_foreign_key "meal_plans", "users"
+  add_foreign_key "recipes", "meal_plans"
 end
