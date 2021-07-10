@@ -19,7 +19,7 @@ const Meal_planShow = ({ location, match, deleteMeal_plan, history }) => {
         Meal: {location.state.meal}
       </p>
       <p>
-        Theme: ${location.state.theme}
+        Theme: {location.state.theme}
       </p>
       <Button variant="warning" onClick={() => handleEditShow()}>Edit</Button>
       {' '}
