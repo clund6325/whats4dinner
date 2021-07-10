@@ -1,50 +1,45 @@
-import { Link, withRouter } from 'react-router-dom';
 import { AuthConsumer } from '../../providers/AuthProvider';
+import { Link, withRouter } from 'react-router-dom';
+import { Navbar, Nav, Button } from 'react-bootstrap';
 
-const Navbar = ({ user, handleLogout, history }) => {
+const MainNavbar = ({ user, handleLogout, location, history }) => {
 
-  // show nav items base on login
   const rightNavItems = () => {
     if (user) {
-      // links that user see when logged in
-      return (
-        <>
-          <Link onClick={() => handleLogout(history) }>
+      return(
+        <Nav className="justify-content-end">
+          <Nav.Link href="/meal_plans">Meal Plans</Nav.Link>
+          <Button variant="outline-info" onClick={() => handleLogout(history)}>
             Logout
-          </Link>
-        </>
+          </Button>
+        </Nav>
       )
     } else {
-      // links the user see when not logged in
       return (
-        <>
-          <Link to="/login">
-            Login
-          </Link>
-          <Link to="/register">
-            Register
-          </Link>
-        </>
+        <Nav className="mr-auto justify-content-end">
+          <Nav.Link href="/login">Login</Nav.Link>
+          <Nav.Link href="/register">Register</Nav.Link>
+        </Nav>
       )
     }
   }
-  // show up regardless of logged in or not
-  return(
-    <nav>
+
+  return (
+    <Navbar bg="dark" variant="dark">
       <Link to="/">
-        Home
+        <Navbar.Brand>Home</Navbar.Brand>
       </Link>
       { rightNavItems() }
-    </nav>
+    </Navbar>
   )
 }
 
-const ConnectedNavbar = (props) => (
+const ConnectedMainNavbar = (props) => (
   <AuthConsumer>
-    { auth =>
-      <Navbar {...props} {...auth} />
+    { auth => 
+      <MainNavbar {...props} {...auth} />
     }
   </AuthConsumer>
 )
 
-export default withRouter(ConnectedNavbar);
+export default withRouter(ConnectedMainNavbar);

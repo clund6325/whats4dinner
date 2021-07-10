@@ -15,7 +15,7 @@ const Meal_planList = ({ meal_plans, getAllMeal_plans }) => {
             pathname: `/meal_plans/${m.id}`,
             state: { ...m }
           }}>
-            <ListGroup.Item>Meal_plan during: {m.week_day}</ListGroup.Item>
+            <ListGroup.Item>Meal Plan during: {m.week_day}</ListGroup.Item>
           </Link>
         )}
       </ListGroup>
