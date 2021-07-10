@@ -4,12 +4,12 @@ import axios from 'axios';
 export const RecipeContext = React.createContext();
 export const RecipeConsumer = RecipeContext.Consumer;
 
-const RecipeProvider = ({children}) => {
+const RecipeProvider = ({meal_plan_id, children}) => {
 
   const [recipes, setRecipes] = useState([])
   
   const getAllRecipes = () => {
-    axios.get(`/api/meal_plans/${id}/recipes`)
+    axios.get(`/api/meal_plans/${meal_plan_id}/recipes`)
       .then(res => {
         setRecipes(res.data)
       })
@@ -17,7 +17,7 @@ const RecipeProvider = ({children}) => {
   }
 
   const addRecipe = (recipe) => {
-    axios.put(`/api/meal_plans/${id}/recipes`, {recipe} )
+    axios.put(`/api/meal_plans/${meal_plan_id}/recipes`, {recipe} )
       .then( res => {
         setRecipes([...recipes, res.data])
       })

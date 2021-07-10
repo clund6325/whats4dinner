@@ -1,5 +1,7 @@
 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
+meals = ["Breakfast", "Lunch", "Dinner"]
+
 5.times do
 
     # user = User.create(

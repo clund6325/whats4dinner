@@ -2,7 +2,7 @@ class Api::MealPlansController < ApplicationController
   before_action :set_meal_plan, only: [:show, :update, :destroy]
 
   def index
-    render json: current_user.meal_plan
+    render json: current_user.meal_plans
   end
 
   def show

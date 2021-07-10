@@ -11,8 +11,7 @@ const Meal_planShow = ({ location, match, deleteMeal_plan, history }) => {
 
   return (
     <>
-      <h1>Meal Plan Show # {location.state.id}</h1>
-      {/* <h1>Meal_plan Show # {match.params.id}</h1> */}
+      <h1>Meal Plan # {location.state.id}</h1>
       <p>
         Week Day: {location.state.week_day}
       </p>
@@ -27,7 +26,7 @@ const Meal_planShow = ({ location, match, deleteMeal_plan, history }) => {
       <Button variant="danger" onClick={() => deleteMeal_plan(match.params.id, history)}>Delete</Button>
       <Modal show={editshow} onHide={handleEditClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Meal_plan Show # {location.state.id} Edit</Modal.Title>
+          <Modal.Title>Meal_plan # {location.state.id} Edit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Meal_planForm { ...location.state } handleEditClose={handleEditClose} />
