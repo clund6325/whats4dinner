@@ -7,7 +7,7 @@ export const Meal_planConsumer = Meal_planContext.Consumer;
 
 const Meal_planProvider = ({ children }) => {
 
-    const [meal_plan, setMeal_plan] = useState([])
+    const [meal_plans, setMeal_plans] = useState([])
     useEffect( () => {
         axios.get('/api/meal_plans')
         .then( res => setMeal_plans(res.data))
@@ -22,7 +22,7 @@ const Meal_planProvider = ({ children }) => {
         .catch( err => console.log(err))
    }
 
-   const updateMeal_plan = (id, meal_plan) => {
+   const updateMeal_plan = (id, meal_plan, history) => {
        axios.put(`/api/meal_plans/${id}`, { meal_plan })
         .then(res => {
             const updatedMeal_plans = meal_plans.map( m => {
@@ -32,15 +32,17 @@ const Meal_planProvider = ({ children }) => {
                 return m
             })
             setMeal_plans(updatedMeal_plans)
+            history.push("/meal_plans")
         })
         .catch( err => console.log(err) )
    }
 
-   const deleteMeal_plan = (id) => {
+   const deleteMeal_plan = (id, history) => {
        axios.delete(`/api/meal_plans/${id}`)
         .then( res => {
             setMeal_plans(meal_plans.filter(m => m.id !== id))
             alert(res.data.message)
+            history.push("/meal_plans")
         })
         .catch( err => console.log(err) )
 

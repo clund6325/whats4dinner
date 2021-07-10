@@ -9,21 +9,21 @@ const IngredientProvider = ({ children }) => {
 
     const [ingredients, setIngredients] = useState([])
     useEffect( () => {
-        axios.get('/api/recipes/${recipe_id}/ingredients')
+        axios.get(`/api/recipes/${recipe_id}/ingredients`)
         .then( res => setIngredients(res.data))
         .catch(err => console.log(err))
     }, [])
 
    const addIngredient = (ingredient) => {
-       axios.post('/api/recipes/${recipe_id}/ingredients', { ingredient })
+       axios.post(`/api/recipes/${recipe_id}/ingredients`, { ingredient })
         .then( res => {
             setIngredients([...ingredients, res.data])
         })
         .catch( err => console.log(err))
    }
 
-   const updateIngredient = (id, ingredients, history) => {
-       axios.put(`/api/recipes/${recipe_id}/ingredients`, { ingredient })
+   const updateIngredient = (id, ingredient, history) => {
+       axios.put(`/api/recipes/${recipe_id}/ingredients/${id}`, { ingredient })
         .then(res => {
             const updatedIngredients = ingredients.map( i => {
                 if (i.id === id) {
@@ -38,7 +38,7 @@ const IngredientProvider = ({ children }) => {
    }
 
    const deleteIngredient = (id, history) => {
-       axios.delete(`/api/recipes/${recipe_id}/ingredients`)
+       axios.delete(`/api/recipes/${recipe_id}/ingredients/${id}`)
         .then( res => {
             setIngredients(ingredients.filter(i => i.id !== id))
             alert(res.data.message)
@@ -54,8 +54,6 @@ const IngredientProvider = ({ children }) => {
             addIngredient: addIngredient,
             updateIngredient: updateIngredient,
             deleteIngredient: deleteIngredient,
-
-
         }}>
             { children }
         </IngredientContext.Provider>

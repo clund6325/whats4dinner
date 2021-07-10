@@ -1,6 +1,11 @@
+import React from 'react';
+import { Jumbotron } from 'react-bootstrap';
+
 const Home = () => (
   <>
-    <h1>Home Page</h1>
+    <Jumbotron>
+      <h1>Home Page</h1>
+    </Jumbotron>
   </>
 )
 
