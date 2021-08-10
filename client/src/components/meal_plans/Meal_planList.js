@@ -10,7 +10,7 @@ const Meal_planList = ({ meal_plans, getAllMeal_plans }) => {
   return (
     <>
       <ListGroup>
-        { meal_plans.map( m => 
+        { meal_plans.map( (m) => 
           <Link to={{
             pathname: `/meal_plans/${m.id}`,
             state: { ...m }

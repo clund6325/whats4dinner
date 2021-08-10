@@ -10,16 +10,19 @@ const Meal_planProvider = ({ children }) => {
     const [meal_plans, setMeal_plans] = useState([])
     const getAllMeal_plans = () => {
         axios.get('/api/meal_plans')
-        .then( res => setMeal_plans(res.data))
+        .then( res => {
+            setMeal_plans(res.data)
+        })
         .catch(err => console.log(err))
     }
 
-   const addMeal_plan = (meal_plan) => {
+   const addMeal_plan = (meal_plan, history) => {
        axios.post('/api/meal_plans', { meal_plan })
         .then( res => {
             setMeal_plans([...meal_plans, res.data])
         })
         .catch( err => console.log(err))
+        history.push("/meal_plans")
    }
 
    const updateMeal_plan = (id, meal_plan, history) => {

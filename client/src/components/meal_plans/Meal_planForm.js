@@ -19,7 +19,7 @@ const Meal_planForm = ({ addMeal_plan, id, week_day, meal, theme, updateMeal_pla
       updateMeal_plan(id, meal_plan, history)
       handleEditClose()
     } else {
-      addMeal_plan(meal_plan)
+      addMeal_plan(meal_plan, history)
     }
     setMeal_plan({ week_day: "", meal: "", theme: "" })
   }

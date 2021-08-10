@@ -23,7 +23,7 @@ const Meal_planShow = ({ location, match, deleteMeal_plan, history }) => {
       </p>
       <Button variant="warning" onClick={() => handleEditShow()}>Edit</Button>
       {' '}
-      <Button variant="danger" onClick={() => deleteMeal_plan(match.params.id, history)}>Delete</Button>
+      <Button variant="danger" onClick={() => deleteMeal_plan(match.params.meal_plan_id, history)}>Delete</Button>
       <Modal show={editshow} onHide={handleEditClose}>
         <Modal.Header closeButton>
           <Modal.Title>Meal_plan # {location.state.id} Edit</Modal.Title>

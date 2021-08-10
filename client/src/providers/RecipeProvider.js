@@ -40,7 +40,7 @@ const RecipeProvider = ({meal_plan_id, children}) => {
   }
 
   const deleteRecipe = (id, history) => {
-    axios.delete(`/api/meal_plans/${id}/recipes/${id}`)
+    axios.delete(`/api/meal_plans/${meal_plan_id}/recipes/${id}`)
       .then( res => {
         setRecipes(recipes.filter(r => r.id !== id))
         alert(res.data.message)

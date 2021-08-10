@@ -2,10 +2,10 @@
 
 class User < ActiveRecord::Base
   extend Devise::Models
-  has_many :meal_plans
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+  has_many :meal_plans, dependent: :destroy
 end

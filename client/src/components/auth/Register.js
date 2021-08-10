@@ -9,6 +9,7 @@ const Register = ({ handleRegister, history }) => {
     e.preventDefault();
     if (user.password === user.passwordConfirmation) {
       handleRegister(user, history);
+      setUser({ name: '', email: '', password: '', passwordConfirmation: '' })
     } else {
       alert('Passwords Do Not Match!')
     }
@@ -18,14 +19,24 @@ const Register = ({ handleRegister, history }) => {
     <>
       <h1>Register</h1>
       <Form onSubmit={handleSubmit}>
+      <Form.Group controlId="formBasicName">
+          <Form.Label><b>Name</b></Form.Label>
+          <Form.Control
+            autoFocus
+            type="name" 
+            placeholder="name" 
+            name="name"
+            value={user.name}
+            onChange={(e) => setUser({...user, name: e.target.value})}
+          />
+        </Form.Group>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control
-            autoFocus
-            required         
+            required
             name='email'
             value={user.email}
-            placeholder='Email'
+            placeholder='email'
             type='email'
             onChange={(e) => setUser({ ...user, email: e.target.value })}
           />
@@ -36,7 +47,7 @@ const Register = ({ handleRegister, history }) => {
             required
             name='password'
             value={user.password}
-            placeholder='Password'
+            placeholder='password'
             type='password'
             onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
